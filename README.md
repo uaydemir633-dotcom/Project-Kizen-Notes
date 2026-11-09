@@ -37,7 +37,7 @@ Write, color-code, pin, tag, and archive notes. Attach images by picking, draggi
 - **Rich text** — Bold, Italic, Underline, Strikethrough formatting
 - **Checkboxes** — insert `[ ]` / `[x]` items that render as ☐ / ☑ in the preview
 - **Images** — attach via file picker, drag & drop, or paste from clipboard (Ctrl+V)
-- **Duplicate notes** with one click from the ⋮ menu
+- **Duplicate notes** from the editor's ⋮ menu ("Make a copy")
 - **Version history** — every save snapshots the previous state; restore any version later
 - **Empty-note guard** — empty notes are quietly discarded, no clutter
 
@@ -49,7 +49,6 @@ Write, color-code, pin, tag, and archive notes. Attach images by picking, draggi
 - **Trash** — recoverable; delete permanently only when you choose
 - **Labels** — write `#tag` inline, and the tag appears in the sidebar and as chips on the note card
 - **Label manager** — create custom labels without writing them in a note, delete labels from all notes at once
-- **Color filters** — click a color to filter notes of that color
 
 ### 🔍 Search
 
@@ -175,6 +174,15 @@ Runtime files (auto-created, not in the repo):
 - Light / Dark / System theme, adjustable font size
 - Export to Markdown (single or bulk), full ZIP backup (`Ctrl + Shift + E`)
 - Keyboard shortcuts: `Ctrl+N`, `Ctrl+F`, `Ctrl+Shift+E`, `Ctrl+S`, `Esc`
+
+---
+
+## 🐛 Known Limitations
+
+- **No color-filter buttons in the sidebar.** The database layer (`NotesDB.list_all`) supports `filter_mode="color:<name>"`, but `_build_sidebar` only creates buttons for *Notes*, *Reminders*, *Archive*, *Trash*, and label filters. If you want to expose color filters in the UI, add buttons in `_build_sidebar` that call `_set_filter(f"color:{name}")`.
+- **Default font size is 14, but the Settings dialog only offers 11 / 13 / 15.** Opening Settings will visually show no preset selected; picking any option will overwrite the default. If you want the middle option to be the default, either change `_body_font_size = 13` in the code or add a 14 option to `SettingsDialog`.
+- **`__version__.py` is optional.** The module tries `from __version__ import __version__, __repo__` and falls back to `1.0.0a1` / `uaydemir633-dotcom/Kizen-Notes`. If you ship a separate `__version__.py`, keep it in sync with `README.md`'s badges.
+- **Version history button says "Download" but actually restores.** `HistoryDialog` labels the action `Download`; clicking it calls `db.restore_version` and overwrites the current note. This is intentional in the code path but the label is misleading.
 
 ---
 
