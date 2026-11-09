@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ Kizen-Notes
+# ⚡Project-Kizen-Notes
 
 ### Local-first, Google Keep-style notes app built with Python + PySide6
 
