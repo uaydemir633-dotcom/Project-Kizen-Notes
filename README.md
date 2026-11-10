@@ -7,11 +7,11 @@
 **Rich text · Colors · Labels · Pinning · Image attachments · Version history · Markdown & ZIP export**
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Version](https://img.shields.io/badge/version-1.0.0a1-orange.svg?style=flat-square)]()
+[![Version](https://img.shields.io/badge/version-1.0.0-green.svg?style=flat-square)]()
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](#-license)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=flat-square)]()
 [![UI: PySide6](https://img.shields.io/badge/UI-PySide6-41CD52?style=flat-square&logo=qt&logoColor=white)](https://doc.qt.io/qtforpython-6/)
-[![Status](https://img.shields.io/badge/status-alpha-orange?style=flat-square)]()
+[![Status](https://img.shields.io/badge/status-stable-brightgreen?style=flat-square)]()
 
 </div>
 
@@ -23,7 +23,7 @@
 
 Write, color-code, pin, tag, and archive notes. Attach images by picking, dragging & dropping, or pasting. Every edit is preserved in a version history you can restore from. Export your entire workspace as a ZIP backup or as a folder of Markdown files whenever you want.
 
-> **Status:** `v1.0.0a1` — Alpha. Core functionality is stable and ready for daily use, but expect occasional polish passes on UI details.
+> **Status:** `v1.0.0` — **Stable**. Ready for daily use. 37 bugs fixed since alpha.
 
 ---
 
@@ -44,7 +44,7 @@ Write, color-code, pin, tag, and archive notes. Attach images by picking, draggi
 ### 🗂️ Organization
 
 - **Notes** — all active notes
-- **Reminders** — pinned notes float here for quick access
+- **Pinned** — pinned notes float here for quick access
 - **Archive** — keep completed notes but out of the main view
 - **Trash** — recoverable; delete permanently only when you choose
 - **Labels** — write `#tag` inline, and the tag appears in the sidebar and as chips on the note card
@@ -121,7 +121,7 @@ cd Project-Kizen-Notes
 
 pip install PySide6
 
-python project_kizen_Notes_v1_0_0a1.py
+python project_kizen_Notes_v1_0_0.py
 ```
 
 ### First Launch
@@ -135,7 +135,7 @@ The app creates its workspace automatically:
 └── assets/           # Attached images (content-hashed filenames)
 ```
 
-- The toast **"✓ ⚡Kizen-Notes v1.0.0a1"** appears at the top to confirm launch.
+- The toast **"✓ ⚡Kizen-Notes v1.0.0"** appears at the top to confirm launch.
 - Click **＋ Take a note…** or press `Ctrl + N` to write your first note.
 
 ---
@@ -144,9 +144,9 @@ The app creates its workspace automatically:
 
 ```text
 Project-Kizen-Notes/
-├── project_kizen_Notes_v1_0_0a1.py   # Single-file PySide6 app
-├── README.md                          # This file
-└── LICENSE                            # MIT
+├── project_kizen_Notes_v1_0_0.py      # Single-file PySide6 app
+├── README.md                           # This file
+└── LICENSE                             # MIT
 ```
 
 Runtime files (auto-created, not in the repo):
@@ -161,6 +161,18 @@ Runtime files (auto-created, not in the repo):
 
 ## 🗂️ Version History
 
+### `v1.0.0` — First stable release 🎉
+
+**37 bug fixes since alpha:**
+
+- **Editor:** pin state persistence, no-op save guard, orphan image cleanup on cancel/duplicate/delete
+- **Database:** HTML + plain_body sync on tag deletion, `VACUUM INTO` for safe backup
+- **Theme:** persisted light/dark/system mode, live widget restyling on switch
+- **Sidebar:** property-driven collapse mode, footer hidden when collapsed, auto filter reset on tag deletion
+- **History:** restore confirmation dialog, "Restore" button (was "Download")
+- **UX:** correct toast messages (saved/trashed/duplicated), "Pinned" label accuracy
+- **Extra:** Trash context menu hides "New note", paste-create blocked in Trash view
+
 ### `v1.0.0a1` — Initial alpha
 
 - 🎉 First public release of the standalone notes app
@@ -173,16 +185,15 @@ Runtime files (auto-created, not in the repo):
 - Grid / List view toggle, collapsible sidebar
 - Light / Dark / System theme, adjustable font size
 - Export to Markdown (single or bulk), full ZIP backup (`Ctrl + Shift + E`)
-- Keyboard shortcuts: `Ctrl+N`, `Ctrl+F`, `Ctrl+Shift+E`, `Ctrl+S`, `Esc`
 
 ---
 
 ## 🐛 Known Limitations
 
-- **No color-filter buttons in the sidebar.** The database layer (`NotesDB.list_all`) supports `filter_mode="color:<name>"`, but `_build_sidebar` only creates buttons for *Notes*, *Reminders*, *Archive*, *Trash*, and label filters. If you want to expose color filters in the UI, add buttons in `_build_sidebar` that call `_set_filter(f"color:{name}")`.
-- **Default font size is 14, but the Settings dialog only offers 11 / 13 / 15.** Opening Settings will visually show no preset selected; picking any option will overwrite the default. If you want the middle option to be the default, either change `_body_font_size = 13` in the code or add a 14 option to `SettingsDialog`.
-- **`__version__.py` is optional.** The module tries `from __version__ import __version__, __repo__` and falls back to `1.0.0a1` / `uaydemir633-dotcom/Kizen-Notes`. If you ship a separate `__version__.py`, keep it in sync with `README.md`'s badges.
-- **Version history button says "Download" but actually restores.** `HistoryDialog` labels the action `Download`; clicking it calls `db.restore_version` and overwrites the current note. This is intentional in the code path but the label is misleading.
+- **No color-filter buttons in the sidebar.** The database layer (`NotesDB.list_all`) supports `filter_mode="color:<name>"`, but the UI doesn't expose color filters yet. Planned for `v1.1.0`.
+- **No system tray / global hotkey.** The app must be open to use. Planned for `v1.1.0`.
+- **No multi-select / bulk operations.** Notes are processed one at a time. Planned for `v1.1.0`.
+- **No import from Google Keep.** Export only, for now. Planned for `v1.2.0`.
 
 ---
 
