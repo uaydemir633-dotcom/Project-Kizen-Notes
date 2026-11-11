@@ -32,6 +32,16 @@ Write, color-code, pin, tag, and archive notes. Attach images by picking, draggi
 
 ---
 
+## 📸 Screenshots
+
+<div align="center">
+  <img width="800" alt="Kizen-Notes Main UI" src="https://github.com/user-attachments/assets/ad6bb8c9-1bec-4721-a684-ac9e120c71d0" />
+  <br><br>
+  <img width="800" alt="Kizen-Notes Editor" src="https://github.com/user-attachments/assets/0551231d-fe3c-4a41-bb4e-4a8b289d9537" />
+</div>
+
+---
+
 ## ✨ Features
 
 ### 📝 Notes Management
