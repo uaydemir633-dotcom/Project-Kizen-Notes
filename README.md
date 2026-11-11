@@ -1,5 +1,3 @@
-<img width="1366" height="768" alt="Screenshot_27" src="https://github.com/user-attachments/assets/ad6bb8c9-1bec-4721-a684-ac9e120c71d0" />
-<img width="1366" height="768" alt="Screenshot_28" src="https://github.com/user-attachments/assets/0551231d-fe3c-4a41-bb4e-4a8b289d9537" />
 <div align="center">
 
 # ⚡Project-Kizen-Notes
