@@ -13,6 +13,11 @@
 [![UI: PySide6](https://img.shields.io/badge/UI-PySide6-41CD52?style=flat-square&logo=qt&logoColor=white)](https://doc.qt.io/qtforpython-6/)
 [![Status](https://img.shields.io/badge/status-stable-brightgreen?style=flat-square)]()
 
+<br>
+
+[![Download for Windows](https://img.shields.io/badge/Download-Windows%20.exe-0078D7?style=for-the-badge&logo=windows)](https://github.com/uaydemir633-dotcom/Project-Kizen-Notes/releases/download/v1.0.0/Kizen-Notes.exe)
+[![View Release Notes](https://img.shields.io/badge/View-Release%20Notes-black?style=for-the-badge&logo=github)](https://github.com/uaydemir633-dotcom/Project-Kizen-Notes/releases)
+
 </div>
 
 ---
@@ -23,7 +28,7 @@
 
 Write, color-code, pin, tag, and archive notes. Attach images by picking, dragging & dropping, or pasting. Every edit is preserved in a version history you can restore from. Export your entire workspace as a ZIP backup or as a folder of Markdown files whenever you want.
 
-> **Status:** `v1.0.0` — **Stable**. Ready for daily use. 37 bugs fixed since alpha.
+> **Status:** `v1.0.0` — **Stable**. Ready for daily use.
 
 ---
 
@@ -113,10 +118,13 @@ Write, color-code, pin, tag, and archive notes. Attach images by picking, draggi
 
 ## 🚀 Quick Start
 
-### Installation
+### Option 1: Download Executable (Windows)
+You don't need Python installed to use Kizen-Notes. Simply download the latest `.exe` from the [Releases page](https://github.com/uaydemir633-dotcom/Project-Kizen-Notes/releases/latest) and double-click it to run. 
+*(Note: Because the app is newly released, Windows SmartScreen might show an "Unknown Publisher" warning. Click "More info" → "Run anyway". Code signing is currently in progress).*
 
+### Option 2: Run from Source (Python)
 ```bash
-git clone https://github.com/YOUR_USERNAME/Project-Kizen-Notes.git
+git clone https://github.com/uaydemir633-dotcom/Project-Kizen-Notes.git
 cd Project-Kizen-Notes
 
 pip install PySide6
@@ -223,6 +231,10 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for details.
 ---
 
 <div align="center">
+
+*Code signing services for Windows executables are provided by the **SignPath Foundation**.*
+
+<br>
 
 **Made with ⚡ by Kizen**
 
